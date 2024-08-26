@@ -1,5 +1,7 @@
 # Maxime Drouhin
 
+<!-- ⚠️ The website should use Jekyll, for now I just used ChatGPT for HTML conversion - see https://chatgpt.com/c/09cdba8c-3130-48af-b58c-2f4741a576e5 -->
+
 Computer science student with a specialisation in Data Science and Artificial Intelligence.
 
 In a double degree at:
