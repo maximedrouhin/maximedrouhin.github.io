@@ -8,7 +8,8 @@ In a double degree at:
 
 You can contact me at this email address:
 
-<img width="200" alt="image" src="https://github.com/user-attachments/assets/862a41b9-002c-47b2-a3b6-9ebe136ac2ef">
+<img width="200" alt="2024-08-26 19_13_57-mdrouhin2@gmail com_transparent" src="https://github.com/user-attachments/assets/476d999b-7edf-4082-acfc-1561e996ea54">
+
 
 ---
 
