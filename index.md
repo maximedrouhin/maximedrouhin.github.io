@@ -20,6 +20,10 @@ You can contact me at this email address:
     <p>Oops! This website is still a work in progress. Grab a hard hat and check back later for more cool stuff! In the meantime, feel free to reach out to me.</p>
 </div>
 
+## About this website
+
+This website is built using Jekyll and hosted on GitHub Pages. For now, I use it to share tools I've created, but blog posts are coming about language learning, memory hacking, Japan, but also about piracy, online privacy, the rise of cybercrime and how to make a personal website even as a complete beginner! I'll also work on the design of this website.
+
 ## Tools I've made
 
 ### For Japanese learners
