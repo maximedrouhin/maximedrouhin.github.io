@@ -20,8 +20,8 @@ You can contact me at this email address:
     <p>Oops! This website is still a work in progress. Grab a hard hat and check back later for more cool stuff! In the meantime, feel free to reach out to me.</p>
 </div>
 
-## My Tools
+## Tools I've made
 
-### Tools for Japanese learners
+### For Japanese learners
 - [WaniKani - Translation practice sheet generator](/tools/translation-practice-sheet-generator/)
 - [Tofugu grammar article finder (GPT)](/tools/grammar-article-finder/)
