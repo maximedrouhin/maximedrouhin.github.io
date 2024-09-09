@@ -29,3 +29,7 @@ This website is built using Jekyll and hosted on GitHub Pages. For now, I use it
 ### For Japanese learners
 - [WaniKani - Translation practice sheet generator](/tools/translation-practice-sheet-generator/)
 - [Tofugu grammar article finder (GPT)](/tools/grammar-article-finder/)
+
+## Credits
+
+The favicon from this website was created by SURAIYA MILI and uploaded on Flaticon. You can find it <a href="https://www.flaticon.com/free-icons/wink" title="wink icon">here</a>.
