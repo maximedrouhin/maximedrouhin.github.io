@@ -39,3 +39,6 @@ As the generated PDF can get a bit long depending on your current level, I recom
 </form>
 
 <p id="status"></p>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="/scripts/wanikani-translation-practice-pdf-generator.js"></script>

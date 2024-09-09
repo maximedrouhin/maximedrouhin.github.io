@@ -125,7 +125,7 @@ async function generatePDF(japaneseSentences) {
     const doc = new jsPDF();
 
     // Load and embed the font into the PDF
-    const fontBase64 = await loadFontBase64('./fonts/NotoSansJP-Regular.ttf');
+    const fontBase64 = await loadFontBase64('/assets/fonts/NotoSansJP-Regular.ttf');
     doc.addFileToVFS("NotoSansJP-Regular.ttf", fontBase64);
     doc.addFont("NotoSansJP-Regular.ttf", "NotoSansJP", "normal");
     doc.setFont("NotoSansJP");
