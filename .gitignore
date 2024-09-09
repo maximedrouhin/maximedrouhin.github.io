@@ -1,0 +1,32 @@
+# .gitignore for Jekyll project
+
+# Ignore generated site files
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+
+# Ignore dependencies
+.bundle/
+vendor/
+
+# Ignore system-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore logs and temp files
+*.log
+*.tmp
+*.pid
+*.swp
+*.lock
+
+# Ignore Gemfile.lock, if you don't want to lock dependencies
+# Gemfile.lock
+
+# Ignore VSCode specific settings
+.vscode/
+
+# Ignore cache files for rubygems/bundler
+.ruby-version
+.ruby-gemset

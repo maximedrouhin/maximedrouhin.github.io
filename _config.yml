@@ -1,0 +1,12 @@
+title: "Maxime Drouhin"
+description: "Maxime Drouhin's Jekyll-powered personal website. It serves as a portfolio and blog."
+baseurl: "" # leave this empty unless hosting in a subdirectory
+url: "https://maximedrouhin.github.io"
+markdown: kramdown
+theme: minima
+plugins:
+  - jekyll-feed
+collections:
+  pages:
+    output: true
+    permalink: /:title/
