@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WaniKani Sentence Download Tool</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>WaniKani Sentence Download Tool</h1>
+        <p>This tool allows you to download your WaniKani sentences for practice. Enter your API token below and click the "Download PDF" button.</p>
+
+        <form id="wanikani-form">
+            <label for="apiToken">WaniKani API Token:</label>
+            <input type="text" id="apiToken" name="apiToken" required>
+            <button type="submit">Download PDF</button>
+        </form>
+
+        <p id="status"></p>
+
+        <a href="index.html">Back to Homepage</a>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="tool.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    line-height: 1.6;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.construction {
+    border: 2px solid #f39c12;
+    padding: 20px;
+    background-color: #fef5e7;
+    color: #e67e22;
+    border-radius: 10px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.contact img {
+    width: 200px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    box-sizing: border-box;
+}
+
+button {
+    padding: 10px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+#status {
+    margin-top: 15px;
+    color: #e74c3c;
+}
