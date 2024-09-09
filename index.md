@@ -23,5 +23,5 @@ You can contact me at this email address:
 ## My Tools
 
 ### Tools for Japanese learners
-- [WaniKani - Translation practice sheet generator](/wanikani-translation-practice-sheet-generator/)
-- [Tofugu grammar article finder (GPT)](/tofugu-grammar-article-finder-gpt/)
+- [WaniKani - Translation practice sheet generator](/tools/translation-practice-sheet-generator/)
+- [Tofugu grammar article finder (GPT)](/tools/grammar-article-finder/)

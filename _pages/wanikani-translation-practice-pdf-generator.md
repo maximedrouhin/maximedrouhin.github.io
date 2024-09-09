@@ -1,7 +1,7 @@
 ---
 layout: default
 title: WaniKani - Translation practice sheet generator
-permalink: /wanikani-translation-practice-sheet-generator/
+permalink: /tools/translation-practice-sheet-generator/
 ---
 
 # WaniKani - Translation practice sheet generator

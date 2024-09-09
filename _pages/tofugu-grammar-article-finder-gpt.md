@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Tofugu Grammar Article Finder (GPT)
-permalink: /tofugu-grammar-article-finder-gpt/
+permalink: /tools/grammar-article-finder/
 ---
 
 # Tofugu Grammar Article Finder (GPT)
