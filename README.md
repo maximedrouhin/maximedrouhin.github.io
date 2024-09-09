@@ -11,16 +11,10 @@ Those should increase in number and quality with time ^^
 
 ## Serving the website locally
 
-Assuming Python 3 is installed on your machine.
+Assuming Ruby and Jekyll are installed on your machine.
 
-On Windows:
-```cmd
-python -m http.server
-```
-
-On Linux:
 ```bash
-python3 -m http.server
+bundle exec jekyll serve
 ```
 
-Then open your browser and go to `localhost:8000` to see the website.
+Then open your browser and go to `localhost:4000` to see the website.
