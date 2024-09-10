@@ -6,11 +6,11 @@ permalink: /tools/learn-i-say-bye-by-imase/
 
 # Learn the song *I say bye* by imase
 
-This is a song I've learned for a song contest for language learners in my university. I didn't win a prize, but just getting to participate and sing on the same scene as very talented singers and musicians was already a great experience.
+This is a song I've learned for a song contest for language learners in my university. I didn't win a prize, but just getting to participate and sing on the same scene as very talented singers and musicians from my university was already a great experience.
 
-Now, I'm sharing the tool I've used to memorize this song. It relies on the idea of first learning the first line of each section, in order to have an anchor to grab on to that guides you throughout the song. Then, you can learn the rest of the lyrics more easily.
+Now, I'm sharing the simple tool I've used to memorize this song. The idea is to first learn the first line of each section, and then learn the rest with the anchors you can now grab. With those anchors, just listening casually to the song while vacuuming or doing the dishes should help you progress in your learning.
 
-This tip is just one of 10 tips that I've found [here](https://ramseyvoice.com/memorize-lyrics/) on how to memorize a song. Rather than reading the article, I recommend getting sent the cheat sheet by email, which is much more concise and cleaner.
+This tip is just one of 10 tips that I've found [here](https://ramseyvoice.com/memorize-lyrics/) on how to memorize a song. Rather than reading the article, I'd recommend getting sent the cheat sheet by email, as it's cleaner and much more concise.
 
 If you want to learn this song too, feel free to use this very simple tool.
 
