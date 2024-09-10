@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title }}</title>
+    <link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}">
+    <style>
+        @font-face {
+            font-family: 'Noto Sans JP';
+            src: url('/assets/fonts/NotoSansJP-Regular.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+        }
+
+        ruby {
+            ruby-position: over;
+        }
+
+        rt {
+            font-size: 0.7em;
+        }
+
+        .translation {
+            color: grey;
+            font-size: 0.9em;
+            margin-top: 0;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+
+        .full-song {
+            visibility: hidden;
+        }
+
+        button#toggleLyrics {
+            font-size: 1.2em;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button#toggleLyrics:hover {
+            background-color: #39843d;
+        }
+    </style>
+    <script>
+        function toggleLyrics() {
+            var fullSongElements = document.querySelectorAll('.full-song');
+            var button = document.querySelector('button#toggleLyrics');
+
+            if (button.textContent === 'Show Full Song') {
+                fullSongElements.forEach(function (element) {
+                    element.style.visibility = 'visible';
+                });
+                button.textContent = 'Hide Full Song';
+            } else {
+                fullSongElements.forEach(function (element) {
+                    element.style.visibility = 'hidden';
+                });
+                button.textContent = 'Show Full Song';
+            }
+        }
+    </script>
+    {% include head_icons.html %}
+</head>
+
+<body>
+<div class="container">
+    {% include header.html %}
+    {{ content }}
+    {% include footer.html %}
+</div>
+</body>
+
+</html>

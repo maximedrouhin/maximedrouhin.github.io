@@ -26,6 +26,7 @@ You can contact me at this email address:
 
 - [WaniKani - Translation practice sheet generator](/tools/translation-practice-sheet-generator/)
 - [Tofugu grammar article finder (GPT)](/tools/grammar-article-finder/)
+- [Learn the song *I say bye* by imase](/tools/learn-i-say-bye-by-imase/)
 
 ## About this website
 
