@@ -4,25 +4,28 @@ document.getElementById("wanikani-form").addEventListener("submit", async functi
 
     const apiToken = document.getElementById("apiToken").value;
     const statusElement = document.getElementById("status");
-    statusElement.textContent = "Fetching data from WaniKani...";
+    statusElement.textContent = "Fetching your current WaniKani level...";
 
     try {
         // Fetch user's current level
-        const level = await fetchCurrentLevel(apiToken);
+        const level = await fetchCurrentLevel(apiToken, statusElement);
 
         // Fetch the IDs of vocabulary items that have been started (from levels 1 to currentLevel)
-        const startedVocabularyIds = await fetchStartedAssignments(apiToken, level);
+        statusElement.textContent = "Fetching started vocabulary assignments...";
+        const startedVocabularyIds = await fetchStartedAssignments(apiToken, level, statusElement);
 
         // Fetch sentences for the started vocabulary items
-        const [japaneseSentences, englishSentences] = await fetchVocabulary(apiToken, startedVocabularyIds);
+        statusElement.textContent = "Fetching example sentences...";
+        const [japaneseSentences, englishSentences] = await fetchVocabulary(apiToken, startedVocabularyIds, statusElement);
 
         // Generate and download the PDF with the fetched sentences
+        statusElement.textContent = "Generating PDF...";
         await generatePDF(japaneseSentences);
         
-        statusElement.textContent = "PDF generated and ready for download!";
+        statusElement.textContent = "PDF generated successfully and ready for download!";
     } catch (error) {
-        console.error("Error fetching data:", error);
-        statusElement.textContent = "Failed to fetch data or generate PDF.";
+        console.error("Error:", error);
+        statusElement.textContent = `Error: ${error.message}`;
     }
 });
 
@@ -31,12 +34,18 @@ document.getElementById("wanikani-form").addEventListener("submit", async functi
  * @param {string} apiToken - WaniKani API token provided by the user.
  * @returns {Promise<number>} - The current level of the user.
  */
-async function fetchCurrentLevel(apiToken) {
-    const response = await fetch("https://api.wanikani.com/v2/user", {
-        headers: { Authorization: `Bearer ${apiToken}` }
-    });
-    const data = await response.json();
-    return data.data.level;
+async function fetchCurrentLevel(apiToken, statusElement) {
+    try {
+        const response = await fetch("https://api.wanikani.com/v2/user", {
+            headers: { Authorization: `Bearer ${apiToken}` }
+        });
+        if (!response.ok) throw new Error("Invalid API token or failed to fetch current level.");
+        const data = await response.json();
+        return data.data.level;
+    } catch (error) {
+        statusElement.textContent = "Failed to fetch current level. Please check your API token.";
+        throw error;
+    }
 }
 
 /**
@@ -45,20 +54,26 @@ async function fetchCurrentLevel(apiToken) {
  * @param {number} currentLevel - The current level of the user.
  * @returns {Promise<number[]>} - A list of started vocabulary subject IDs.
  */
-async function fetchStartedAssignments(apiToken, currentLevel) {
-    const startedVocabularyIds = [];
-    const levels = Array.from({ length: currentLevel }, (_, i) => i + 1).join(','); // Generate levels string (e.g., '1,2,...,currentLevel')
-    let url = `https://api.wanikani.com/v2/assignments?subject_types=vocabulary&started=true&levels=${levels}`;
+async function fetchStartedAssignments(apiToken, currentLevel, statusElement) {
+    try {
+        const startedVocabularyIds = [];
+        const levels = Array.from({ length: currentLevel }, (_, i) => i + 1).join(',');
+        let url = `https://api.wanikani.com/v2/assignments?subject_types=vocabulary&started=true&levels=${levels}`;
 
-    // Loop through pages until there are no more
-    while (url) {
-        const response = await fetch(url, { headers: { Authorization: `Bearer ${apiToken}` } });
-        const data = await response.json();
-        startedVocabularyIds.push(...data.data.map(item => item.data.subject_id));
-        url = data.pages.next_url; // Fetch next page
+        // Loop through pages until there are no more
+        while (url) {
+            const response = await fetch(url, { headers: { Authorization: `Bearer ${apiToken}` } });
+            if (!response.ok) throw new Error("Failed to fetch started assignments.");
+            const data = await response.json();
+            startedVocabularyIds.push(...data.data.map(item => item.data.subject_id));
+            url = data.pages.next_url; // Fetch next page
+        }
+
+        return startedVocabularyIds;
+    } catch (error) {
+        statusElement.textContent = "Failed to fetch started assignments.";
+        throw error;
     }
-
-    return startedVocabularyIds;
 }
 
 /**
@@ -68,34 +83,40 @@ async function fetchStartedAssignments(apiToken, currentLevel) {
  * @param {number[]} startedVocabularyIds - List of started vocabulary subject IDs.
  * @returns {Promise<[string[], string[]]>} - A tuple containing two arrays: Japanese sentences and their English translations.
  */
-async function fetchVocabulary(apiToken, startedVocabularyIds) {
-    const japaneseSentences = [];
-    const englishSentences = [];
-    let url = `https://api.wanikani.com/v2/subjects?types=vocabulary&ids=${startedVocabularyIds.join(",")}`;
+async function fetchVocabulary(apiToken, startedVocabularyIds, statusElement) {
+    try {
+        const japaneseSentences = [];
+        const englishSentences = [];
+        let url = `https://api.wanikani.com/v2/subjects?types=vocabulary&ids=${startedVocabularyIds.join(",")}`;
 
-    // Loop through the pages until no more results
-    while (url) {
-        const response = await fetch(url, { 
-            headers: { Authorization: `Bearer ${apiToken}` } 
-        });
-        const data = await response.json();
-        
-        data.data.forEach(item => {
-            if (item.data.context_sentences) {
-                item.data.context_sentences.forEach(sentence => {
-                    // Only include sentences with 40 or fewer Japanese characters
-                    if (sentence.ja.length <= 40) {
-                        japaneseSentences.push(sentence.ja);
-                        englishSentences.push(sentence.en);
-                    }
-                });
-            }
-        });
+        // Loop through the pages until no more results
+        while (url) {
+            const response = await fetch(url, { 
+                headers: { Authorization: `Bearer ${apiToken}` } 
+            });
+            if (!response.ok) throw new Error("Failed to fetch vocabulary and sentences.");
+            const data = await response.json();
+            
+            data.data.forEach(item => {
+                if (item.data.context_sentences) {
+                    item.data.context_sentences.forEach(sentence => {
+                        // Only include sentences with 40 or fewer Japanese characters
+                        if (sentence.ja.length <= 40) {
+                            japaneseSentences.push(sentence.ja);
+                            englishSentences.push(sentence.en);
+                        }
+                    });
+                }
+            });
 
-        url = data.pages.next_url; // Move to the next page if exists
+            url = data.pages.next_url; // Move to the next page if exists
+        }
+
+        return [japaneseSentences, englishSentences];
+    } catch (error) {
+        statusElement.textContent = "Failed to fetch example sentences.";
+        throw error;
     }
-
-    return [japaneseSentences, englishSentences];
 }
 
 /**
