@@ -32,6 +32,11 @@ Once you have your token, using this script is as simple as entering it below an
 
 As the generated PDF can get a bit long depending on your current level, I recommend using double-sided printing and/or printing 2 pages per sheet. You'll use less paper and ink, and have a smaller pile of sheets.
 
+<details style="background-color: #f9f9f9; padding: 10px; border: 1px solid #ddd; margin-top: 10px;">
+  <summary>If the script doesn’t work</summary>
+  <p>Just use another browser or device, that should fix it (the script runs on your device so it’s sensitive to those things). Even if that does, don’t hesitate to tell me your OS version and browser version and what went wrong, I’ll have a look into it.</p>
+</details>
+
 <form id="wanikani-form">
   <label for="apiToken">WaniKani API Token:</label>
   <input type="text" placeholder="00000000-0000-0000-0000-000000000000" id="apiToken" name="apiToken" required>
