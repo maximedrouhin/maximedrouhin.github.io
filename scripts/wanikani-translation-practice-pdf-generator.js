@@ -41,17 +41,37 @@ document.getElementById("wanikani-form").addEventListener("submit", async functi
 });
 
 /**
+ * Helper function for making XMLHttpRequest calls.
+ * @param {string} url - The URL to make the request to.
+ * @param {string} apiToken - The API token to use in the request header.
+ * @returns {Promise} - A promise that resolves with the XMLHttpRequest object.
+ */
+function makeRequest(url, apiToken) {
+    return new Promise((resolve, reject) => {
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', url);
+        xhr.setRequestHeader('Authorization', `Bearer ${apiToken}`);
+        xhr.onload = () => {
+            if (xhr.status >= 200 && xhr.status < 300) {
+                resolve(xhr);
+            } else {
+                reject(new Error(`Request failed with status ${xhr.status}`));
+            }
+        };
+        xhr.onerror = () => reject(new Error('Network error occurred'));
+        xhr.send();
+    });
+}
+
+/**
  * Fetches the current level of the user from the WaniKani API.
  * @param {string} apiToken - WaniKani API token provided by the user.
  * @returns {Promise<number>} - The current level of the user.
  */
 async function fetchCurrentLevel(apiToken, statusElement) {
     try {
-        const response = await fetch("https://api.wanikani.com/v2/user", {
-            headers: { Authorization: `Bearer ${apiToken}` }
-        });
-        if (!response.ok) throw new Error("Failed to fetch current level using the API token.");
-        const data = await response.json();
+        const response = await makeRequest("https://api.wanikani.com/v2/user", apiToken);
+        const data = JSON.parse(response.responseText);
         appendStatusMessage(statusElement, `Fetched current level: ${data.data.level}`, 'green');
         return data.data.level;
     } catch (error) {
@@ -74,9 +94,8 @@ async function fetchStartedAssignments(apiToken, currentLevel, statusElement) {
 
         // Loop through pages until there are no more
         while (url) {
-            const response = await fetch(url, { headers: { Authorization: `Bearer ${apiToken}` } });
-            if (!response.ok) throw new Error("Failed to fetch started assignments.");
-            const data = await response.json();
+            const response = await makeRequest(url, apiToken);
+            const data = JSON.parse(response.responseText);
             startedVocabularyIds.push(...data.data.map(item => item.data.subject_id));
             url = data.pages.next_url; // Fetch next page
         }
@@ -104,11 +123,8 @@ async function fetchVocabulary(apiToken, startedVocabularyIds, statusElement) {
 
         // Loop through the pages until no more results
         while (url) {
-            const response = await fetch(url, { 
-                headers: { Authorization: `Bearer ${apiToken}` } 
-            });
-            if (!response.ok) throw new Error("Failed to fetch vocabulary and sentences.");
-            const data = await response.json();
+            const response = await makeRequest(url, apiToken);
+            const data = JSON.parse(response.responseText);
             
             data.data.forEach(item => {
                 if (item.data.context_sentences) {
