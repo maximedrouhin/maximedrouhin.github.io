@@ -41,24 +41,30 @@ document.getElementById("wanikani-form").addEventListener("submit", async functi
 });
 
 /**
- * Helper function for making XMLHttpRequest calls.
+ * Helper function for making synchronous XMLHttpRequest calls.
  * @param {string} url - The URL to make the request to.
  * @param {string} apiToken - The API token to use in the request header.
  * @returns {Promise} - A promise that resolves with the XMLHttpRequest object.
  */
-function makeRequest(url, apiToken) {
+function makeSynchronousRequest(url, apiToken, statusElement) {
     return new Promise((resolve, reject) => {
         const xhr = new XMLHttpRequest();
-        xhr.open('GET', url);
+        xhr.open('GET', url, false); // Make a synchronous request
         xhr.setRequestHeader('Authorization', `Bearer ${apiToken}`);
         xhr.onload = () => {
             if (xhr.status >= 200 && xhr.status < 300) {
+                appendStatusMessage(statusElement, `Request to ${url} succeeded.`, 'green');
                 resolve(xhr);
             } else {
+                appendStatusMessage(statusElement, `Request to ${url} failed with status ${xhr.status}`, 'red');
                 reject(new Error(`Request failed with status ${xhr.status}`));
             }
         };
-        xhr.onerror = () => reject(new Error('Network error occurred'));
+        xhr.onerror = () => {
+            appendStatusMessage(statusElement, `Network error when trying to reach ${url}`, 'red');
+            reject(new Error('Network error occurred'));
+        };
+        appendStatusMessage(statusElement, `Sending request to ${url}...`, 'blue');
         xhr.send();
     });
 }
@@ -70,7 +76,7 @@ function makeRequest(url, apiToken) {
  */
 async function fetchCurrentLevel(apiToken, statusElement) {
     try {
-        const response = await makeRequest("https://api.wanikani.com/v2/user", apiToken);
+        const response = await makeSynchronousRequest("https://api.wanikani.com/v2/user", apiToken, statusElement);
         const data = JSON.parse(response.responseText);
         appendStatusMessage(statusElement, `Fetched current level: ${data.data.level}`, 'green');
         return data.data.level;
@@ -94,10 +100,10 @@ async function fetchStartedAssignments(apiToken, currentLevel, statusElement) {
 
         // Loop through pages until there are no more
         while (url) {
-            const response = await makeRequest(url, apiToken);
+            const response = await makeSynchronousRequest(url, apiToken, statusElement);
             const data = JSON.parse(response.responseText);
             startedVocabularyIds.push(...data.data.map(item => item.data.subject_id));
-            url = data.pages.next_url; // Fetch next page
+            url = data.pages.next_url; // Fetch next page if it exists
         }
 
         appendStatusMessage(statusElement, `Fetched ${startedVocabularyIds.length} started vocabulary assignments.`, 'green');
@@ -123,7 +129,7 @@ async function fetchVocabulary(apiToken, startedVocabularyIds, statusElement) {
 
         // Loop through the pages until no more results
         while (url) {
-            const response = await makeRequest(url, apiToken);
+            const response = await makeSynchronousRequest(url, apiToken, statusElement);
             const data = JSON.parse(response.responseText);
             
             data.data.forEach(item => {
