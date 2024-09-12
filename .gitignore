@@ -27,6 +27,9 @@ Thumbs.db
 # Ignore VSCode specific settings
 .vscode/
 
+# Ignore Project IDX specific settings
+.idx
+
 # Ignore cache files for rubygems/bundler
 .ruby-version
 .ruby-gemset
