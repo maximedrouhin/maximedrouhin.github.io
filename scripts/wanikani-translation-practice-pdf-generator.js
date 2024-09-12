@@ -1,31 +1,42 @@
+// Helper function to append status messages with color
+function appendStatusMessage(statusElement, message, color = 'black') {
+    const newMessage = document.createElement('span');
+    newMessage.textContent = message;
+    newMessage.style.color = color;
+    statusElement.appendChild(newMessage);
+    statusElement.appendChild(document.createElement('br'));  // Add a line break after each message
+    statusElement.scrollTop = statusElement.scrollHeight; // Scroll to the latest message
+}
+
 // Main event listener for the form submission
 document.getElementById("wanikani-form").addEventListener("submit", async function (event) {
     event.preventDefault();
 
     const apiToken = document.getElementById("apiToken").value;
     const statusElement = document.getElementById("status");
-    statusElement.textContent = "Fetching your current WaniKani level...";
+    statusElement.innerHTML = ""; // Clear previous status messages
+    appendStatusMessage(statusElement, "Fetching your current WaniKani level...", 'blue');
 
     try {
         // Fetch user's current level
         const level = await fetchCurrentLevel(apiToken, statusElement);
 
         // Fetch the IDs of vocabulary items that have been started (from levels 1 to currentLevel)
-        statusElement.textContent = "Fetching started vocabulary assignments...";
+        appendStatusMessage(statusElement, "Fetching started vocabulary assignments...", 'blue');
         const startedVocabularyIds = await fetchStartedAssignments(apiToken, level, statusElement);
 
         // Fetch sentences for the started vocabulary items
-        statusElement.textContent = "Fetching example sentences...";
+        appendStatusMessage(statusElement, "Fetching example sentences...", 'blue');
         const [japaneseSentences, englishSentences] = await fetchVocabulary(apiToken, startedVocabularyIds, statusElement);
 
         // Generate and download the PDF with the fetched sentences
-        statusElement.textContent = "Generating PDF...";
+        appendStatusMessage(statusElement, "Generating PDF...", 'blue');
         await generatePDF(japaneseSentences);
         
-        statusElement.textContent = "PDF generated successfully and ready for download!";
+        appendStatusMessage(statusElement, "PDF generated successfully and ready for download!", 'green');
     } catch (error) {
         console.error("Error:", error);
-        statusElement.textContent = `Error: ${error.message}`;
+        appendStatusMessage(statusElement, `Error: ${error.message}`, 'red');
     }
 });
 
@@ -41,9 +52,10 @@ async function fetchCurrentLevel(apiToken, statusElement) {
         });
         if (!response.ok) throw new Error("Invalid API token or failed to fetch current level.");
         const data = await response.json();
+        appendStatusMessage(statusElement, `Fetched current level: ${data.data.level}`, 'green');
         return data.data.level;
     } catch (error) {
-        statusElement.textContent = "Failed to fetch current level. Please check your API token.";
+        appendStatusMessage(statusElement, "Failed to fetch current level. Please check your API token.", 'red');
         throw error;
     }
 }
@@ -69,9 +81,10 @@ async function fetchStartedAssignments(apiToken, currentLevel, statusElement) {
             url = data.pages.next_url; // Fetch next page
         }
 
+        appendStatusMessage(statusElement, `Fetched ${startedVocabularyIds.length} started vocabulary assignments.`, 'green');
         return startedVocabularyIds;
     } catch (error) {
-        statusElement.textContent = "Failed to fetch started assignments.";
+        appendStatusMessage(statusElement, "Failed to fetch started assignments.", 'red');
         throw error;
     }
 }
@@ -112,9 +125,10 @@ async function fetchVocabulary(apiToken, startedVocabularyIds, statusElement) {
             url = data.pages.next_url; // Move to the next page if exists
         }
 
+        appendStatusMessage(statusElement, `Fetched ${japaneseSentences.length} sentences.`, 'green');
         return [japaneseSentences, englishSentences];
     } catch (error) {
-        statusElement.textContent = "Failed to fetch example sentences.";
+        appendStatusMessage(statusElement, "Failed to fetch example sentences.", 'red');
         throw error;
     }
 }
