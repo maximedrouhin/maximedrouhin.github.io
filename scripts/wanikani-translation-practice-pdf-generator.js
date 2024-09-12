@@ -50,12 +50,12 @@ async function fetchCurrentLevel(apiToken, statusElement) {
         const response = await fetch("https://api.wanikani.com/v2/user", {
             headers: { Authorization: `Bearer ${apiToken}` }
         });
-        if (!response.ok) throw new Error("Invalid API token or failed to fetch current level.");
+        if (!response.ok) throw new Error("Failed to fetch current level using the API token.");
         const data = await response.json();
         appendStatusMessage(statusElement, `Fetched current level: ${data.data.level}`, 'green');
         return data.data.level;
     } catch (error) {
-        appendStatusMessage(statusElement, "Failed to fetch current level. Please check your API token.", 'red');
+        appendStatusMessage(statusElement, "Failed to fetch current level using the API token. Trying with another browser might be a good idea.", 'red');
         throw error;
     }
 }
