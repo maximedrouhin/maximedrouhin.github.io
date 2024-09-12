@@ -23,6 +23,17 @@ async function handleRateLimit(response, statusElement) {
     return false; // No retry needed
 }
 
+// Helper function to handle API errors and display meaningful messages
+async function handleApiErrors(response, statusElement) {
+    if (!response.ok) {
+        const errorData = await response.json(); // Parse the error response
+        const errorMessage = errorData.error || "Unknown error occurred"; // Extract error message if available
+        const errorCode = response.status;
+        appendStatusMessage(statusElement, `API Error: ${errorCode} - ${errorMessage}`, 'red');
+        throw new Error(`API Error: ${errorCode} - ${errorMessage}`);
+    }
+}
+
 // Main event listener for the form submission
 document.getElementById("wanikani-form").addEventListener("submit", async function (event) {
     event.preventDefault();
@@ -57,7 +68,6 @@ document.getElementById("wanikani-form").addEventListener("submit", async functi
 
 /**
  * Fetches the current level of the user from the WaniKani API.
- * Handles rate limits if exceeded.
  * @param {string} apiToken - WaniKani API token provided by the user.
  * @returns {Promise<number>} - The current level of the user.
  */
@@ -71,7 +81,7 @@ async function fetchCurrentLevel(apiToken, statusElement) {
 
             if (await handleRateLimit(response, statusElement)) continue;
 
-            if (!response.ok) throw new Error("Failed to fetch current level using the API token.");
+            await handleApiErrors(response, statusElement);
             const data = await response.json();
             appendStatusMessage(statusElement, `Fetched current level: ${data.data.level}`, 'green');
             return data.data.level;
@@ -84,7 +94,6 @@ async function fetchCurrentLevel(apiToken, statusElement) {
 
 /**
  * Fetches the IDs of vocabulary items that are "started" for levels from 1 to the current level.
- * Handles rate limits if exceeded.
  */
 async function fetchStartedAssignments(apiToken, currentLevel, statusElement) {
     try {
@@ -99,7 +108,7 @@ async function fetchStartedAssignments(apiToken, currentLevel, statusElement) {
                 response = await fetch(url, { headers: { Authorization: `Bearer ${apiToken}` } });
                 if (await handleRateLimit(response, statusElement)) continue;
 
-                if (!response.ok) throw new Error("Failed to fetch started assignments.");
+                await handleApiErrors(response, statusElement);
                 const data = await response.json();
                 startedVocabularyIds.push(...data.data.map(item => item.data.subject_id));
                 url = data.pages.next_url; // Fetch next page
@@ -117,7 +126,6 @@ async function fetchStartedAssignments(apiToken, currentLevel, statusElement) {
 /**
  * Fetches example sentences for the given vocabulary subject IDs.
  * Only sentences with up to 40 Japanese characters are included.
- * Handles rate limits if exceeded.
  * @param {string} apiToken - WaniKani API token provided by the user.
  * @param {number[]} startedVocabularyIds - List of started vocabulary subject IDs.
  * @returns {Promise<[string[], string[]]>} - A tuple containing two arrays: Japanese sentences and their English translations.
@@ -138,7 +146,7 @@ async function fetchVocabulary(apiToken, startedVocabularyIds, statusElement) {
 
                 if (await handleRateLimit(response, statusElement)) continue;
 
-                if (!response.ok) throw new Error("Failed to fetch vocabulary and sentences.");
+                await handleApiErrors(response, statusElement);
                 const data = await response.json();
 
                 data.data.forEach(item => {
