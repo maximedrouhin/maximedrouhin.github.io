@@ -13,7 +13,7 @@ In a double degree at:
 
 You can contact me at this email address:
 
-<img alt="Email image" src="https://github.com/user-attachments/assets/476d999b-7edf-4082-acfc-1561e996ea54" style="width: 200px">
+<img alt="Email image" src="https://github.com/user-attachments/assets/476d999b-7edf-4082-acfc-1561e996ea54" style="height: 1.4em">
 
 <div class="construction">
     <h2>🚧 Website Under Construction! 🚧</h2>
