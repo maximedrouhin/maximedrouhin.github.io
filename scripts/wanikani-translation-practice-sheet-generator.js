@@ -217,9 +217,12 @@ async function generatePDF(japaneseSentences) {
     doc.addFont("NotoSansJP-Regular.ttf", "NotoSansJP", "normal");
     doc.setFont("NotoSansJP");
 
+    // Store the number of sentences
+    const numSentences = japaneseSentences.length;
+
     // Set up the document title and formatting
     doc.setFontSize(16);
-    doc.text("Japanese Sentence Translation Exercise", 20, 20);
+    doc.text(`Japanese - Translation practice sheet (${numSentences} sentences)`, 20, 20);
 
     let y = 40;  // Initial Y position for sentence placement
     doc.setFontSize(12);
@@ -235,5 +238,5 @@ async function generatePDF(japaneseSentences) {
     });
 
     // Save the PDF to the user's device
-    doc.save("WaniKani_Sentences.pdf");
+    doc.save(`Japanese - Translation practice sheet (${numSentences} sentences).pdf`);
 }

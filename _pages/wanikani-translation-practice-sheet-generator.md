@@ -16,7 +16,7 @@ Here is the result: a JS script running locally that fetches all the example sen
 
 <details style="background-color: #f9f9f9; padding: 10px; border: 1px solid #ddd; margin-top: 10px;">
   <summary>Click here to see more</summary>
-  <p>In case you're worried about putting your API token below, you can <a href="https://github.com/maximedrouhin/maximedrouhin.github.io/blob/master/wanikani-translation-practice-pdf-generator.js">take a look at the script</a>, which is not very long. You can also see from the domain name that this website is hosted by GitHub pages, which means that the code corresponds to the page you're using 😉</p>
+  <p>In case you're worried about putting your API token below, you can <a href="https://github.com/maximedrouhin/maximedrouhin.github.io/blob/master/wanikani-translation-practice-sheet-generator.js">take a look at the script</a>, which is not very long. You can also see from the domain name that this website is hosted by GitHub pages, which means that the code corresponds to the page you're using 😉</p>
 
   <p>Limitations:</p>
   <ul>
@@ -46,4 +46,4 @@ As the generated PDF can get a bit long depending on your current level, I recom
 <p id="status"></p>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script src="/scripts/wanikani-translation-practice-pdf-generator.js"></script>
+<script src="/scripts/wanikani-translation-practice-sheet-generator.js"></script>
