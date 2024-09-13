@@ -134,35 +134,47 @@ async function fetchVocabulary(apiToken, startedVocabularyIds, statusElement) {
     try {
         const japaneseSentences = [];
         const englishSentences = [];
-        let url = `https://api.wanikani.com/v2/subjects?types=vocabulary&ids=${startedVocabularyIds.join(",")}`;
+        
+        // Split the IDs into chunks of 500 to avoid overly long URLs
+        // 6662/500 = 13.324, so we will need at most 14 requests
+        const chunkSize = 500;
+        const idChunks = [];
 
-        // Loop through the pages until no more results
-        while (url) {
-            let response;
-            do {
-                response = await fetch(url, {
-                    headers: { Authorization: `Bearer ${apiToken}` }
-                });
+        for (let i = 0; i < startedVocabularyIds.length; i += chunkSize) {
+            idChunks.push(startedVocabularyIds.slice(i, i + chunkSize));
+        }
 
-                if (await handleRateLimit(response, statusElement)) continue;
+        for (const chunk of idChunks) {
+            let url = `https://api.wanikani.com/v2/subjects?types=vocabulary&ids=${chunk.join(",")}`;
 
-                await handleApiErrors(response, statusElement);
-                const data = await response.json();
+            // Loop through the pages until no more results
+            while (url) {
+                let response;
+                do {
+                    response = await fetch(url, {
+                        headers: { Authorization: `Bearer ${apiToken}` }
+                    });
 
-                data.data.forEach(item => {
-                    if (item.data.context_sentences) {
-                        item.data.context_sentences.forEach(sentence => {
-                            // Only include sentences with 40 or fewer Japanese characters
-                            if (sentence.ja.length <= 40) {
-                                japaneseSentences.push(sentence.ja);
-                                englishSentences.push(sentence.en);
-                            }
-                        });
-                    }
-                });
+                    if (await handleRateLimit(response, statusElement)) continue;
 
-                url = data.pages.next_url; // Move to the next page if exists
-            } while (response.status === 429);
+                    await handleApiErrors(response, statusElement);
+                    const data = await response.json();
+
+                    data.data.forEach(item => {
+                        if (item.data.context_sentences) {
+                            item.data.context_sentences.forEach(sentence => {
+                                // Only include sentences with 40 or fewer Japanese characters
+                                if (sentence.ja.length <= 40) {
+                                    japaneseSentences.push(sentence.ja);
+                                    englishSentences.push(sentence.en);
+                                }
+                            });
+                        }
+                    });
+
+                    url = data.pages.next_url; // Move to the next page if exists
+                } while (response.status === 429);
+            }
         }
 
         appendStatusMessage(statusElement, `Fetched ${japaneseSentences.length} sentences.`, 'green');
