@@ -12,7 +12,7 @@ A few years back, Koichi from Tofugu made a wonderful exercise sheet, which cons
 
 Alas, [things have happened](https://www.tofugu.com/news/closing-tofugu-store/) and this exercise sheet is not available anymore. With [no indication of a chance to see it resurface](https://community.wanikani.com/t/what-happened-to-4500-sentences/58546), I've took it into my own hands to try and make a replacement for it for WaniKani users.
 
-Here is the result: a JS script running locally that fetches all the example sentences you've seen in WaniKani — which happen to correspond to the sentences using vocabulary you've learned — and downloads a printable PDF.
+Here is the result: a simple tool (it fits in one small JS script) running on your device that fetches all the example sentences you've seen in WaniKani and generates a printable PDF.
 
 <details style="background-color: #f9f9f9; padding: 10px; border: 1px solid #ddd; margin-top: 10px;">
   <summary>Click here to see more</summary>
