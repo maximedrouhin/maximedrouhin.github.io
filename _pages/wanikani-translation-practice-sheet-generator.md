@@ -34,7 +34,7 @@ As the generated PDF can get a bit long depending on your current level, I recom
 
 <details style="background-color: #f9f9f9; padding: 10px; border: 1px solid #ddd; margin-top: 10px;">
   <summary>If the script doesn’t work</summary>
-  <p>Just use another browser or device, that should fix it (the script runs on your device so it’s sensitive to those things). Even if that does, don’t hesitate to tell me your OS version and browser version and what went wrong, I’ll have a look into it.</p>
+  <p>Just use another browser or device, that should fix it (the script runs on your device so it’s sensitive to those things). Whether it does or not, don’t hesitate to tell me your OS version and browser version and what went wrong, I’ll have a look into it.</p>
 </details>
 
 <form id="wanikani-form">
