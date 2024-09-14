@@ -14,7 +14,7 @@ Alas, [things have happened](https://www.tofugu.com/news/closing-tofugu-store/) 
 
 Here is the result: a simple tool (it fits in one small JS script) running on your device that fetches all the example sentences you've seen in WaniKani and generates a printable PDF.
 
-<details style="background-color: #f9f9f9; padding: 10px; border: 1px solid #ddd; margin-top: 10px;">
+<details>
   <summary>Click here to see more</summary>
   <p>In case you're worried about putting your API token below, you can <a href="https://github.com/maximedrouhin/maximedrouhin.github.io/blob/master/wanikani-translation-practice-sheet-generator.js">take a look at the script</a>, which is not very long. You can also see from the domain name that this website is hosted by GitHub pages, which means that the code corresponds to the page you're using 😉</p>
 
@@ -32,7 +32,7 @@ Once you have your token, using this script is as simple as entering it below an
 
 As the generated PDF can get a bit long depending on your current level, I recommend using double-sided printing and/or printing 2 pages per sheet. You'll use less paper and ink, and have a smaller pile of sheets.
 
-<details style="background-color: #f9f9f9; padding: 10px; border: 1px solid #ddd; margin-top: 10px;">
+<details>
   <summary>If the script doesn’t work</summary>
   <p>Just use another browser or device, that should fix it (the script runs on your device so it’s sensitive to those things). Whether it does or not, don’t hesitate to tell me your OS version and browser version and what went wrong, I’ll have a look into it.</p>
 </details>

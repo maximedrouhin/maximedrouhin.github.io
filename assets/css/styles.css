@@ -3,8 +3,47 @@ body {
     margin: 0;
     padding: 20px;
     line-height: 1.6;
-    background-color: #f9f9f9;
-    color: #333;
+    background-color: #e1e1e3;
+    color: #323437;
+}
+
+a:link, a:visited {
+    color: #aaaeb3;
+    /* text-decoration: none; */
+}
+
+a:hover, a:active {
+    color: #323437;
+    /* text-decoration: underline; */
+}
+
+input,textarea {
+    outline: none;
+    border: none;
+    border-radius: .5rem;
+    background: #d1d3d8;
+    color: #323437;
+    padding: .5em;
+    font-size: 1em;
+    caret-color: #323437;
+    line-height: 1.25em
+}
+
+details {
+    border-radius: .5rem;
+    padding: 10px;
+    margin: 10px auto;
+    border: 3px solid #d1d3d8
+}
+
+details:not([open]):hover {
+    background-color: #d1d3d8;
+    cursor: pointer;
+}
+
+details summary {
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .container {
