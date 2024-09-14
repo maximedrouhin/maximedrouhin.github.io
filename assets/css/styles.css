@@ -1,3 +1,17 @@
+:root {
+    --main-color: #e2b714;
+    --caret-color: #e2b714;
+    --sub-color: #aaaeb3;
+    --sub-alt-color: #d1d3d8;
+    --bg-color: #e1e1e3;
+    --text-color: #323437;
+    --error-color: #da3333;
+    --error-extra-color: #791717;
+    --colorful-error-color: #da3333;
+    --colorful-error-extra-color: #791717;
+    --roundness: 0.5rem;
+  }
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -39,11 +53,11 @@ details {
 details:not([open]):hover {
     background-color: #d1d3d8;
     cursor: pointer;
+    transition: background-color 0.15s ease;
 }
 
 details summary {
     cursor: pointer;
-    transition: background-color 0.3s ease;
 }
 
 .container {
@@ -72,17 +86,44 @@ input[type="text"] {
     box-sizing: border-box;
 }
 
+/* Default button style (normal state) */
 button {
-    padding: 10px 15px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    cursor: pointer;
+    padding: .5em;
+    color: var(--text-color);
+    background: var(--sub-alt-color);
+    padding: .5em;
+    border-radius: var(--roundness);
+    border: none; /* Remove borders */
+    font-size: 1em; /* Font size */
+    cursor: pointer; /* Pointing hand cursor */
+    transition: background-color 0.15s ease, color 0.15s ease; /* Smooth transitions */
+    user-select: none;
 }
 
+/* Button hover state */
 button:hover {
-    background-color: #45a049;
+    color: var(--bg-color);
+    background-color: var(--text-color); /* Background color on hover */
 }
+
+/* Button active state (when clicked) */
+button:active {
+    color: var(--bg-color); /* Text color when clicked */
+    background-color: var(--sub-color); /* Background color when clicked */
+}
+
+
+/* normal:
+d1d3d8
+323437
+
+on hover:
+text color: e1e1e3
+background: 323437
+
+when clicked:
+e1e1e3
+aaaeb3 */
 
 #status {
     margin-top: 15px;
