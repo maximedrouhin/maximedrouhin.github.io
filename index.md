@@ -34,4 +34,4 @@ This website is built using Jekyll and hosted on GitHub Pages. For now, I use it
 
 ## Credits
 
-The favicon from this website was created by SURAIYA MILI and uploaded on Flaticon. You can find it <a href="https://www.flaticon.com/free-icons/wink" title="wink icon">here</a>.
+The favicon from this website was created by SURAIYA MILI and uploaded on Flaticon. You can find it <a href="https://www.flaticon.com/free-icon/wink_9527007" title="wink icon">here</a>.
