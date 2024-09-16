@@ -8,8 +8,8 @@ title: Maxime Drouhin
 Computer science student with a specialization in Data Science and Artificial Intelligence.
 
 In a double degree at:
-- Télécom Strasbourg (🇫🇷)
-- Karlsruhe University of Applied Sciences (🇩🇪)
+- Télécom Strasbourg 🇫🇷
+- Karlsruhe University of Applied Sciences 🇩🇪
 
 You can contact me at this email address:
 
@@ -35,3 +35,5 @@ This website is built using Jekyll and hosted on GitHub Pages. For now, I use it
 ## Credits
 
 The favicon from this website was created by SURAIYA MILI and uploaded on Flaticon. You can find it <a href="https://www.flaticon.com/free-icon/wink_9527007" title="wink icon">here</a>.
+
+Emoji icons are from [Twemoji](https://github.com/twitter/twemoji).

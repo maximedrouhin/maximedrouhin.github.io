@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ page.title }}</title>
   <link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}">
+  <script src="https://unpkg.com/twemoji@latest/dist/twemoji.min.js" crossorigin="anonymous"></script>
   {% include head_icons.html %}
 </head>
 <body>
@@ -13,5 +14,11 @@
     {{ content }}
     {% include footer.html %}
   </div>
+  <script>
+    twemoji.parse(
+      document.body,
+      { base: 'https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/' }
+    );
+  </script>
 </body>
 </html>
