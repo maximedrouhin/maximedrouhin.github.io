@@ -31,7 +31,7 @@ As the generated PDF can get a bit long depending on your current level, I recom
   
   Try another browser or device, that might fix it (the script runs on your device so it’s sensitive to those things). Whether it does or not, don’t hesitate to tell me your OS version, your browser version and what went wrong, I’ll have a look into it.
   
-  To do that, you can open an issue [on GitHub](https://github.com/maximedrouhin/maximedrouhin.github.io/issues) or write a message [under the WaniKani community post for this tool](https://community.wanikani.com/t/web-translation-practice-sheet-generator-successor-of-koichis-4500-sentences/67185). You can also or clone the repository [here](https://github.com/maximedrouhin/maximedrouhin.github.io) to submit a pull request if you want to and can fix it yourself!
+  To do that, you can open an issue [on GitHub](https://github.com/maximedrouhin/maximedrouhin.github.io/issues) or write a message [under the WaniKani community post for this tool](https://community.wanikani.com/t/web-translation-practice-sheet-generator-successor-of-koichis-4500-sentences/67185). You can also clone the repository [here](https://github.com/maximedrouhin/maximedrouhin.github.io) to submit a pull request if you want to and can fix it yourself!
 
   Please don't use my personal email for this, though.
 </details>
