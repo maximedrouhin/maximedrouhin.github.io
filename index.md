@@ -17,7 +17,7 @@ You can contact me at this email address:
 
 <div class="construction">
     <h2>🚧 Website Under Construction! 🚧</h2>
-    <p>Oops! This website is still a work in progress. Grab a hard hat and check back later for more cool stuff! In the meantime, feel free to reach out to me.</p>
+    <p>This website is still a work in progress. Feel free to explore what's already there ^^</p>
 </div>
 
 ## Tools I've made
