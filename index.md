@@ -15,6 +15,8 @@ You can contact me at this email address:
 
 <img alt="Email image" src="https://github.com/user-attachments/assets/476d999b-7edf-4082-acfc-1561e996ea54" style="height: 1.4em">
 
+And here's my [LinkedIn](https://www.linkedin.com/in/maxime-drouhin-5880031b8/).
+
 <div class="construction">
     <h2>🚧 Website Under Construction! 🚧</h2>
     <p>This website is still a work in progress. Feel free to explore what's already there ^^</p>
