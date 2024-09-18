@@ -14,14 +14,12 @@ Alas, [things have happened](https://www.tofugu.com/news/closing-tofugu-store/) 
 
 Here is the result: a simple tool (it fits in one small JS script) running on your device that fetches all the example sentences you've seen in WaniKani and generates a printable PDF.
 
-To use this script, you can generate a WaniKani API token [here](https://www.wanikani.com/settings/personal_access_tokens). You don’t have to select any permissions, as the script only needs to read your data, which is allowed by default for the tokens you generate.
-
-Once you have your token, using this script is as simple as entering it below and clicking the button ^^.
-
 As the generated PDF can get a bit long depending on your current level, I recommend using double-sided printing and/or printing 2 pages per sheet. You'll use less paper and ink, and have a smaller pile of sheets.
 
 <form id="wanikani-form">
-  <label for="apiToken">WaniKani API Token:</label>
+  <label for="apiToken">
+    WaniKani API Token (generate it <a href="https://www.wanikani.com/settings/personal_access_tokens" target="_blank">here</a> - only read access needed):
+  </label>
   <input type="text" placeholder="00000000-0000-0000-0000-000000000000" id="apiToken" name="apiToken" required>
   <button type="submit">Fetch sentences and generate PDF</button>
 </form>
