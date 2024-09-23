@@ -13,7 +13,26 @@
     --info-color: #00c2ff;
     --warning-color: orange;
     --roundness: 0.5rem;
-  }
+    --terminal-text-color: var(--bg-color);
+    --terminal-background: var(--text-color);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-color: #323437;
+        --main-color: #e2b714;
+        --caret-color: #e2b714;
+        --sub-color: #646669;
+        --sub-alt-color: #2c2e31;
+        --text-color: #d1d0c5;
+        --error-color: #ca4754;
+        --error-extra-color: #7e2a33;
+        --colorful-error-color: #ca4754;
+        --colorful-error-extra-color: #7e2a33;
+        --terminal-text-color: var(--text-color);
+        --terminal-background: #111;
+    }
+}
 
 body {
     font-family: Arial, sans-serif;
@@ -76,6 +95,11 @@ details summary {
     border-radius: 10px;
     margin-top: 20px;
     text-align: center;
+    @media (prefers-color-scheme: dark) {
+        border: none;
+        background-color: #8c4100;
+        color: #fef5e7;    
+    }
 }
 
 .contact img {
@@ -87,6 +111,11 @@ input[type="text"] {
     padding: 10px;
     margin: 10px 0;
     box-sizing: border-box;
+}
+
+input::placeholder {
+    color: var(--sub-color);
+    opacity: 1;
 }
 
 /* Default button style (normal state) */
@@ -148,8 +177,8 @@ fieldset {
 #status {
     font-family: "Roboto Mono", "Roboto Mono", Vazirmatn, monospace;
     /* margin-top: 15px; */
-    color: #e74c3c;
-    background-color: var(--text-color);
+    /* background-color: var(--text-color); */
+    background-color: var(--terminal-background);
     border-radius: .5rem;
     /* padding: 10px; */
     /* margin: 10px auto; */

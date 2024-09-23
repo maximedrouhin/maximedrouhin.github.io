@@ -1,5 +1,5 @@
 // Helper function to append status messages with color
-function appendStatusMessage(statusElement, message, color = 'var(--bg-color)') {
+function appendStatusMessage(statusElement, message, color = 'var(--terminal-text-color)') {
     statusElement.style.padding = '10px';
     // statusElement.style.margin = '10px auto';
     statusElement.style.marginTop = '15px';
