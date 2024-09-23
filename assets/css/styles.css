@@ -9,6 +9,9 @@
     --error-extra-color: #791717;
     --colorful-error-color: #da3333;
     --colorful-error-extra-color: #791717;
+    --success-color: #00c700;
+    --info-color: #00c2ff;
+    --warning-color: orange;
     --roundness: 0.5rem;
   }
 
@@ -128,7 +131,26 @@ when clicked:
 e1e1e3
 aaaeb3 */
 
+div.withborder {
+    border-radius: .5rem;
+    padding: 10px;
+    margin: 10px auto;
+    border: 3px solid var(--sub-alt-color)
+}
+
+fieldset {
+    border-radius: .5rem;
+    padding: 10px;
+    margin: 10px auto;
+    border: 3px solid var(--sub-alt-color)
+}
+
 #status {
-    margin-top: 15px;
+    font-family: "Roboto Mono", "Roboto Mono", Vazirmatn, monospace;
+    /* margin-top: 15px; */
     color: #e74c3c;
+    background-color: var(--text-color);
+    border-radius: .5rem;
+    /* padding: 10px; */
+    /* margin: 10px auto; */
 }

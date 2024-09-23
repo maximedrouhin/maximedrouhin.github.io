@@ -16,15 +16,17 @@ Here is the result: a simple tool (it fits in one small JS script) running on yo
 
 As the generated PDF can get a bit long depending on your current level, I recommend using double-sided printing and/or printing 2 pages per sheet. You'll use less paper and ink, and have a smaller pile of sheets.
 
-<form id="wanikani-form">
-  <label for="apiToken">
-    WaniKani API Token (generate it <a href="https://www.wanikani.com/settings/personal_access_tokens" target="_blank">here</a> - only read access needed):
-  </label>
-  <input type="text" placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" id="apiToken" name="apiToken" required>
-  <button type="submit">Fetch sentences and generate PDF</button>
-</form>
+<div class="withborder">
+  <form id="wanikani-form">
+    <label for="apiToken">
+      WaniKani API Token (generate it <a href="https://www.wanikani.com/settings/personal_access_tokens" target="_blank">here</a> - only read access needed):
+    </label>
+    <input type="text" placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" id="apiToken" name="apiToken" required>
+    <button type="submit">Fetch sentences and generate PDF</button>
+  </form>
 
-<p id="status"></p>
+  <div id="status"></div>
+</div>
 
 <details markdown="1">
   <summary>🪲 The script doesn’t work?</summary>

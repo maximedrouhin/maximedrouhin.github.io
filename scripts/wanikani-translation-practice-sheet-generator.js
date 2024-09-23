@@ -1,5 +1,8 @@
 // Helper function to append status messages with color
-function appendStatusMessage(statusElement, message, color = 'black') {
+function appendStatusMessage(statusElement, message, color = 'var(--bg-color)') {
+    statusElement.style.padding = '10px';
+    // statusElement.style.margin = '10px auto';
+    statusElement.style.marginTop = '15px';
     const newMessage = document.createElement('span');
     newMessage.textContent = message;
     newMessage.style.color = color;
@@ -15,7 +18,7 @@ async function handleRateLimit(response, statusElement) {
         const currentTime = Math.floor(Date.now() / 1000);
         const waitTime = resetTime - currentTime;
 
-        appendStatusMessage(statusElement, `Rate limit exceeded. Waiting ${waitTime} seconds to retry...`, 'orange');
+        appendStatusMessage(statusElement, `Rate limit exceeded. Waiting ${waitTime} seconds to retry...`, 'var(--warning-color)');
 
         await new Promise(resolve => setTimeout(resolve, waitTime * 1000));
         return true; // Indicates retry needed
@@ -29,7 +32,7 @@ async function handleApiErrors(response, statusElement) {
         const errorData = await response.json(); // Parse the error response
         const errorMessage = errorData.error || "Unknown error occurred"; // Extract error message if available
         const errorCode = response.status;
-        appendStatusMessage(statusElement, `API Error: ${errorCode} - ${errorMessage}`, 'red');
+        appendStatusMessage(statusElement, `API Error: ${errorCode} - ${errorMessage}`, 'var(--error-color)');
         throw new Error(`API Error: ${errorCode} - ${errorMessage}`);
     }
 }
@@ -41,28 +44,32 @@ document.getElementById("wanikani-form").addEventListener("submit", async functi
     const apiToken = document.getElementById("apiToken").value;
     const statusElement = document.getElementById("status");
     statusElement.innerHTML = ""; // Clear previous status messages
-    appendStatusMessage(statusElement, "Fetching your current WaniKani level...", 'blue');
+    appendStatusMessage(statusElement, "Fetching your current WaniKani level...", 'var(--info-color)');
+
+    // appendStatusMessage(statusElement, "test default");
+    // appendStatusMessage(statusElement, "test red", 'var(--error-color)');
+    // appendStatusMessage(statusElement, "test orange", 'var(--warning-color)');
 
     try {
         // Fetch user's current level
         const level = await fetchCurrentLevel(apiToken, statusElement);
 
         // Fetch the IDs of vocabulary items that have been started (from levels 1 to currentLevel)
-        appendStatusMessage(statusElement, "Fetching started vocabulary assignments...", 'blue');
+        appendStatusMessage(statusElement, "Fetching started vocabulary assignments...", 'var(--info-color)');
         const startedVocabularyIds = await fetchStartedAssignments(apiToken, level, statusElement);
 
         // Fetch sentences for the started vocabulary items
-        appendStatusMessage(statusElement, "Fetching example sentences...", 'blue');
+        appendStatusMessage(statusElement, "Fetching example sentences...", 'var(--info-color)');
         const [japaneseSentences, englishSentences] = await fetchVocabulary(apiToken, startedVocabularyIds, statusElement);
 
         // Generate and download the PDF with the fetched sentences
-        appendStatusMessage(statusElement, "Generating PDF...", 'blue');
+        appendStatusMessage(statusElement, "Generating PDF...", 'var(--info-color)');
         await generatePDF(japaneseSentences);
 
-        appendStatusMessage(statusElement, "PDF generated successfully and ready for download!", 'green');
+        appendStatusMessage(statusElement, "PDF generated successfully and ready for download!", 'var(--success-color)');
     } catch (error) {
         console.error("Error:", error);
-        appendStatusMessage(statusElement, `Error: ${error.message}`, 'red');
+        appendStatusMessage(statusElement, `Error: ${error.message}`, 'var(--error-color)');
     }
 });
 
@@ -83,11 +90,11 @@ async function fetchCurrentLevel(apiToken, statusElement) {
 
             await handleApiErrors(response, statusElement);
             const data = await response.json();
-            appendStatusMessage(statusElement, `Fetched current level: ${data.data.level}`, 'green');
+            appendStatusMessage(statusElement, `Fetched current level: ${data.data.level}`, 'var(--success-color)');
             return data.data.level;
         } while (true);
     } catch (error) {
-        appendStatusMessage(statusElement, "Failed to fetch current level using the API token. Trying with another browser might be a good idea.", 'red');
+        appendStatusMessage(statusElement, "Failed to fetch current level using the API token. Trying with another browser might be a good idea.", 'var(--error-color)');
         throw error;
     }
 }
@@ -115,10 +122,10 @@ async function fetchStartedAssignments(apiToken, currentLevel, statusElement) {
             } while (response.status === 429);
         }
 
-        appendStatusMessage(statusElement, `Fetched ${startedVocabularyIds.length} started vocabulary assignments.`, 'green');
+        appendStatusMessage(statusElement, `Fetched ${startedVocabularyIds.length} started vocabulary assignments.`, 'var(--success-color)');
         return startedVocabularyIds;
     } catch (error) {
-        appendStatusMessage(statusElement, "Failed to fetch started assignments.", 'red');
+        appendStatusMessage(statusElement, "Failed to fetch started assignments.", 'var(--error-color)');
         throw error;
     }
 }
@@ -177,10 +184,10 @@ async function fetchVocabulary(apiToken, startedVocabularyIds, statusElement) {
             }
         }
 
-        appendStatusMessage(statusElement, `Fetched ${japaneseSentences.length} sentences.`, 'green');
+        appendStatusMessage(statusElement, `Fetched ${japaneseSentences.length} sentences.`, 'var(--success-color)');
         return [japaneseSentences, englishSentences];
     } catch (error) {
-        appendStatusMessage(statusElement, "Failed to fetch example sentences.", 'red');
+        appendStatusMessage(statusElement, "Failed to fetch example sentences.", 'var(--error-color)');
         throw error;
     }
 }
