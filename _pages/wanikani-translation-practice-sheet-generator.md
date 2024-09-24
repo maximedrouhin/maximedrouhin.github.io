@@ -12,7 +12,7 @@ A few years back, Koichi from Tofugu made a wonderful exercise sheet, which cons
 
 Alas, [things have happened](https://www.tofugu.com/news/closing-tofugu-store/) and this exercise sheet is not available anymore. With [no indication of a chance to see it resurface](https://community.wanikani.com/t/what-happened-to-4500-sentences/58546), I've took it into my own hands to try and make a replacement for it for WaniKani users.
 
-Here is the result: a simple tool (it fits in one small JS script) running on your device that fetches all the example sentences you've seen in WaniKani and generates a printable PDF.
+Here is the result: a simple tool (it fits in [one small JS script](https://github.com/maximedrouhin/maximedrouhin.github.io/blob/master/scripts/wanikani-translation-practice-sheet-generator.js)) running on your device that fetches all the example sentences you've seen in WaniKani and generates a printable PDF.
 
 As the generated PDF can get a bit long depending on your current level, I recommend using double-sided printing and/or printing 2 pages per sheet. You'll use less paper and ink, and have a smaller pile of sheets.
 
