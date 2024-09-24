@@ -151,7 +151,11 @@ async function fetchVocabulary(apiToken, startedVocabularyIds, statusElement) {
             idChunks.push(startedVocabularyIds.slice(i, i + chunkSize));
         }
 
-        for (const chunk of idChunks) {
+        const totalChunks = idChunks.length;
+        for (let i = 0; i < totalChunks; i++) {
+            const chunk = idChunks[i];
+            appendStatusMessage(statusElement, `\u00A0\u00A0Fetching chunk ${i + 1} of ${totalChunks}...`, 'var(--info-color)');
+
             let url = `https://api.wanikani.com/v2/subjects?types=vocabulary&ids=${chunk.join(",")}`;
 
             // Loop through the pages until no more results
