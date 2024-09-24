@@ -52,11 +52,11 @@ document.getElementById("wanikani-form").addEventListener("submit", async functi
 
     try {
         // Fetch user's current level
-        const level = await fetchCurrentLevel(apiToken, statusElement);
+        const currentLevel = await fetchCurrentLevel(apiToken, statusElement);
 
-        // Fetch the IDs of vocabulary items that have been started (from levels 1 to currentLevel)
+        // Fetch the IDs of vocabulary items that have been started (from level 1 to currentLevel)
         appendStatusMessage(statusElement, "Fetching started vocabulary assignments...", 'var(--info-color)');
-        const startedVocabularyIds = await fetchStartedAssignments(apiToken, level, statusElement);
+        const startedVocabularyIds = await fetchStartedAssignments(apiToken, currentLevel, statusElement);
 
         // Fetch sentences for the started vocabulary items
         appendStatusMessage(statusElement, "Fetching example sentences...", 'var(--info-color)');
