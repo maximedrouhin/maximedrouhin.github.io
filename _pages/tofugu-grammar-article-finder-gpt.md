@@ -8,6 +8,9 @@ permalink: /tools/grammar-article-finder/
 
 (This tool requires a ChatGPT account - but not a subscription)
 
+<img width="598" alt="2025-06-23 11_51_32-ChatGPT - Tofugu grammar article finder (unofficial)_rounded corners" src="https://github.com/user-attachments/assets/44cf3430-99b6-4306-ae05-01bef4bce734" />
+
+
 If you're learning Japanese, there's something you shouldn't forget about, and that's grammar. If your first language is English or another Western language, Japanese grammar is fundamentally different from what you know.
 
 At some point - Tofugu recommends at around 300 kanji in [this wonderful and very detailed article on how to learn Japanese](https://www.tofugu.com/learn-japanese/) - you should begin to think about grammar. One easy way to do this is simply to keep the [Japanese grammar section](https://www.tofugu.com/japanese-grammar/) of the Tofugu website close at hand, and get into the habit of consulting it whenever you encounter a bit of grammar that confuses you a bit.
