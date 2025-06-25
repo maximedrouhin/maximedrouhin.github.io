@@ -10,7 +10,7 @@ permalink: /tools/translation-practice-sheet-generator/
 
 A few years back, Koichi from Tofugu made a wonderful exercise sheet, which consisted of... 4500 sentences in Japanese, that you had to translate. With no solution sheet. The thing is, his idea is actually — and perhaps surprisingly — deeply rooted in the science of learning. You can learn more about it [here](https://www.youtube.com/watch?v=Q06uDobeA8g&list=PL8dUxOTCkXEp6QfaEsQ3egLL4acS-Mwo0&index=6).
 
-Alas, [things have happened](https://www.tofugu.com/news/closing-tofugu-store/) and this exercise sheet is not available anymore. With [no indication of a chance to see it resurface](https://community.wanikani.com/t/what-happened-to-4500-sentences/58546), I've took it into my own hands to try and make a replacement for it for WaniKani users.
+Alas, [things have happened](https://www.tofugu.com/news/closing-tofugu-store/) and this exercise sheet is not available anymore. With [no indication of a chance to see it resurface](https://community.wanikani.com/t/what-happened-to-4500-sentences/58546), I've taken it into my own hands to try and make a replacement for it for WaniKani users.
 
 Here is the result: a simple tool (it fits in [one small JS script](https://github.com/maximedrouhin/maximedrouhin.github.io/blob/master/scripts/wanikani-translation-practice-sheet-generator.js)) running on your device that fetches all the example sentences you've seen in WaniKani and generates a printable PDF.
 
