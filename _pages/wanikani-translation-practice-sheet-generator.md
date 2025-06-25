@@ -41,7 +41,7 @@ As the generated PDF can get a bit long depending on your current level, I recom
 <details markdown="1">
   <summary>🛡️ Worried about putting your API token below?</summary>
 
-  - You can [take a look at the script](https://github.com/maximedrouhin/maximedrouhin.github.io/blob/master/wanikani-translation-practice-sheet-generator.js), it's not very long and I try to keep it well commented.
+  - You can [take a look at the script](https://github.com/maximedrouhin/maximedrouhin.github.io/blob/master/scripts/wanikani-translation-practice-sheet-generator.js), it's not very long and I try to keep it well commented.
   - You can also see from the domain name that this website is hosted by GitHub Pages, which means that the code you see on GitHub is the same that's being run on this page 😉
   - You only need a read-only token to use this tool ^^
 </details>
